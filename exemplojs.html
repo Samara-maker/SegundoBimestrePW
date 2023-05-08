@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+</head>
+<body>
+    <script>
+        //Caixa e alerta
+        /*comentario com mais de uma linha*/
+        alert('Samara Hespanhol  ♡');
+        alert('Cuidado sou perigosa');
+        document.write('<p>Bem vindos ♡</p>');
+        document.write('<h1> Bom aproveito </h1>');
+        document.write('Aqui você encotra só virus, não entre nos link que irei disponibilizar');
+        document.write('<h5> Eu te avisei.... <h5>');
+        document.write(2023);
+        document.write('<br>');
+        //document.write(3*3); ele já mostra o resultado
+    </script>
+    <p id="elemento"></p>
+    <script>
+        const meuParag = document.getElementById('elemento');
+        var ano = 2025;
+        var nome = 'Samara Hespanhol';
+        var profissao = 'Engenheira';
+        meuParag.innerHTML = ' Eu sou ' +nome+ ' minha profissão em ' +ano+ ' é ' +profissao;
+        var nome2 = prompt('Qual é seu nome fi?');
+        document.write('Seja muito bem vindo,' +nome2);
+    </script>
+    <form action="" name="formulario">
+        <input type="radio" name="habilita" id="sim" value="sim" 
+        onclick="HabilitarCampo(1)">Habilitar
+        <input type="radio" name="habilita" id="não" value="não" 
+        checked onclick="HabilitarCampo(0)">Desabilitar
+        <br>
+        <label>Campo</label>
+        <input type="text" name="campo" id="campo" disabled>
+    </form>
+    <script>
+        function HabilitarCampo(opcao){
+            if(opcao){
+                document.formulario.campo.disabled = false;
+            }else{
+                document.formulario.campo.value ='';
+                document.formulario.campo.disabled = true;
+            }
+        }
+    </script>
+    
+</body>
+</html>

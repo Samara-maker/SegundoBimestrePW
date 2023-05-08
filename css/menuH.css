@@ -1,0 +1,109 @@
+.menu{
+    display:flex;
+    justify-content: space-between;
+    padding: 1.5rem 6rem;
+}
+
+.menuEsquerdo{
+    display: flex;
+    align-items: center;
+}
+
+.menuEsquerdo h1{
+    color: rgb(2, 2, 2);
+}
+
+.menuLista{
+    display:flex;
+    align-items: center;
+}
+
+.menuLista ul{
+    display:flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.ItemMenu{
+    margin:0 1px;
+    background-color:rgb(210, 133, 220);
+}
+
+.inkItem{
+    text-decoration: none;
+    font-size: 14pt;
+    font-weight: 700;
+    color: rgb(248, 243, 243);
+    padding: 0 15px;
+   
+}
+
+.menuDireito{
+    border: none;
+    background-color: rgb(230, 169, 235);
+    padding: 8px 13px;
+    border-radius: 4px;
+    color:rgb(230, 11, 241);
+    text-decoration:underline;/*deixar sumplinhado*/
+}
+
+.menuBotao{
+    display: none; /*sumir botão de menu*/
+}
+
+.respMenu{
+    display: none; /*sumir*/
+}
+
+@media screen and (max-width: 761px){ /*tem q ser a ultima coisa do CSS*/
+    .menu{
+        padding: 1.5rem 4rem;/*proporcional ao elmento q ele está dentro*/
+    }
+
+    .menuLista{
+        display: none;
+    }
+
+    .menuDireito{
+        display: none;
+    }
+
+    .menuBotao{
+        display: block;
+    }
+
+    .menuBotao button{
+        background-color: transparent;
+        color: rgb(255, 255, 255);
+        border: none;
+        cursor: pointer;
+    }
+
+    .respMenu ul{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 1rem;
+        list-style: none;
+    }
+
+    .respMenu .ItemMenu{
+        display: block;
+        padding: 1.2rem;
+    }
+
+    .respMenu .menuDireito{
+        display: block;
+        padding: 0.5rem 2rem;
+    }
+
+    .respMenu .menuDireito a{
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+
+    .abrir{
+        display: block;
+    }
+}
