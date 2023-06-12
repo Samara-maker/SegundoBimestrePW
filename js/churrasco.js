@@ -1,38 +1,52 @@
 const formulario = document.querySelector("#meuForm");
 const convidados = document.querySelector("#lista-convidados");
-const alunos= JSON.parse(localStorage.getItem("aunos")) ||[];
+const alunos= JSON.parse(localStorage.getItem("alunos")) ||[];
 
-    alunos.forEach((elemento)=>
-    {
-        console.log(elemento.aluno,elemento.qtde)
-    });
+alunos.forEach((elemento)=>
+{
+    novoElemento(elemento);/*escrve para o usuario*/
+});
     
 formulario.addEventListener("submit",(evento)=>
 {
     evento.preventDefault()/*fechar*/
     const aluno = evento.target.elements['aluno'];
     const qtde = evento.target.elements['qtde'];
-    novoElemento(aluno.value,qtde.value);
+    const convidado = alunos.find(elemento => elemento.aluno === aluno.vlue);/*comentar o array*/
+    const alunoStorage={
+        "aluno":aluno.value,
+        "qtde":qtde.value
+    }
+    if(convidado){
+        alunoStorage.id = convidado.id;
+        mudaElemento(alunoStorage);
+        alunos[alunos.findIndex(elemento=> elemento.id === convidado.id)]= alunoStorage;
+
+    }else{
+        alunoStorage.id = alunos[alunos.length -1]?(alunos[alunos.length-1]).id +1:0;
+        novoElemento(alunoStorage);
+        alunos.push(alunoStorage);
+    }
+    localStorage.setItem("alunos",JSON.stringify(alunos));
     aluno.value="";
     qtde.value="";
 });
 
 /*novo elemento*/
 
-function novoElemento(aluno,qtde)
+function novoElemento(alunoAdd)
 {
     const novoItem =document.createElement('li');
-    novoItem.innerHTML = aluno;
+    novoItem.innerHTML = alunoAdd.aluno;
     novoItem.classList.add("item");
     const numeroItem = document.createElement('span');
-    numeroItem.innerHTML = qtde;
+    numeroItem.innerHTML = alunoAdd.qtde;
+    numeroItem.dataset.id = alunoAdd.id;
     novoItem.appendChild(numeroItem);
     convidados.appendChild(novoItem);
-    
-    const alunoStorage={
-        "aluno":aluno,
-        "qtde":qtde
-    }
-    
-    
+}
+
+function mudaElemento(alunoUpdate)
+{
+    console.log(document.querySelector("[data-id='"+alunoUpdate.id+"']").innerHTML = alunoUpdate.qtde);
 }
